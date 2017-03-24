@@ -1,0 +1,26 @@
+{
+  "name": "ecommerce",
+  "version": "1.0.0",
+  "description": "Devmountain final project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jzeballos/ecommerce.git"
+  },
+  "author": "Jorge Zeballos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jzeballos/ecommerce/issues"
+  },
+  "homepage": "https://github.com/jzeballos/ecommerce#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cors": "^2.8.1",
+    "express": "^4.15.2",
+    "massive": "^2.6.0",
+    "morgan": "^1.8.1"
+  }
+}

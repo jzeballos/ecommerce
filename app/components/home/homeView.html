@@ -1,0 +1,29 @@
+<section>
+<h1>Products</h1>
+
+<div class="table-responsive table-striped">
+  <table class="table">
+    <thead>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Description</th>
+    </thead>
+
+    <tbody ng-repeat="product in products">
+    <tr style="vertically-allign: middle">
+      <td>{{product.product}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.description}}</td>
+      <td>
+        <a href="#" class="btn btn-info btn-md">
+          <span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart
+        </a>
+      </td>
+    </tr>
+  </tbody>
+  </table>
+</div>
+
+
+
+</section>
