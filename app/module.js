@@ -7,16 +7,27 @@ angular.module('ecommerce', ['ui.router'])
              templateUrl: "./app/components/home/homeView.html",
              controller: 'homeCtrl'
          })
-        //  .state('products',{
-        //      url: '/products',
-        //     //  parent:'home',
-        //      templateUrl: "app/products.html"
-        //  })
-        //  .state('contact',{
-        //      url:'/contact',
-        //      parent:'home',
-        //      templateUrl: "../views/contact.html"
-        //  })
+          .state('product',{
+             url:'/product/:id',
+             templateUrl: "./app/components/product/productView.html",
+             controller: 'productCtrl'
+         })
+         .state('admin',{
+             url: '/admin',
+             templateUrl: "./app/components/admin/home/adminView.html",
+             controller: 'adminCtrl'
+
+         })
+         .state('edit',{
+             url:'admin/edit/:id',
+             templateUrl: "./app/components/admin/edit/editView.html",
+             controller: 'editCtrl'
+         })
+         .state('create',{
+             url:'admin/create',
+             templateUrl: "./app/components/admin/create/createView.html",
+             controller: 'createCtrl'
+         })
         //  .state('packages',{
         //      url:'/packages',
         //      templateUrl: "../views/packages.html",

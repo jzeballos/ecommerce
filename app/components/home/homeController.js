@@ -1,15 +1,19 @@
-angular.module('ecommerce').controller('homeCtrl', function($scope, homeService) {
-  console.log('home controller');
+angular.module('ecommerce').controller('homeCtrl', function($scope, productsService) {
+  // console.log('home controller');
   $scope.getProducts = function() {
-    homeService.getProducts().then(function(products) {
-      $scope.products = products;
-      console.log('products', products);
-    }).catch(handlerError);
-  }
+      productsService.getProducts().then(function(products) {
+        $scope.products = products;
+        // console.log('products', products);
+      }).catch(handlerError);
+    }
+
   function handlerError(error) {
     console.error(error);
   }
 
-  $scope.getProducts();
+  if (typeof $scope.products == 'undefined') {
+    $scope.getProducts();
+  }
+
 
 })

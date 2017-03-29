@@ -46,7 +46,7 @@ app.get('/api/products/:id', function(req, res) {
 
 app.post('/api/products', function(req, res) {
   // console.log([req.query.name, req.query.description, req.query.price, req.query.imgurl])
-  db.create_product(req.body.product, req.body.price, req.body.description, function(err, product) {
+  db.create_product(req.body.product, req.body.price, req.body.description, req.body.imgurl, function(err, product) {
     // console.log(req.query.id);
     if (err) {
       res.status(500).json(err);
@@ -61,10 +61,11 @@ app.post('/api/products', function(req, res) {
 
 
 app.put('/api/products/:id', function(req, res){
+  console.log(req.params.id.slice(3));
 	if(!req.params.id){
 		return res.status(400).send('id query needed');
 	}
-  db.update_product(req.params.id.slice(3), req.body.product, function(err, product) {
+  db.update_product(req.params.id.slice(3), req.body.product, req.body.price, req.body.description, req.body.imgurl, function(err, product) {
     // console.log(req.query.id);
     if (err) {
       res.status(500).json(err);

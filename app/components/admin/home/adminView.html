@@ -1,0 +1,168 @@
+
+<div class="main-container-admin">
+  <h1 class="admin">Products <small>- Admin</small></h1>
+  <div>
+    <a ui-sref='create' title="Add Product">
+    <h4 class="glyphicon glyphicon-plus col-xs-1 admin"></h4>
+    </a>
+  </div>
+
+</div>
+
+
+
+<!-- <div class="col-xs-1">
+  <a ui-sref="edit({id: product.id})" title="Add Product" class="col-xs-12">
+  <h4><span class="glyphicon glyphicon-trash"></span></h4>
+  </a>
+</div> -->
+
+
+
+
+
+
+<!-- <a ui-sref="edit({id: product.id})" title="Add Product" class="col-xs-12"><h4>
+  <span class="glyphicon glyphicon-plus"> </span></h4>
+</a>
+
+<a ui-sref="edit({id: product.id})" title="Add Product" class="col-xs-12"><h4>
+  <span class="glyphicon glyphicon-trash"></span></h4>
+</a> -->
+
+
+
+<form class="col-xs-12">
+<div class="form-group">
+  <div class="input-group">
+    <div class="input-group-addon"><i class="fa fa-search"></i></div>
+    <input type="text" class="form-control" placeholder="Search" ng-model="searchProduct">
+  </div>
+</div>
+</form>
+
+
+
+
+
+
+
+  <table class="table table-hover table-responsive table-sm">
+
+
+
+
+
+
+
+
+
+
+    <thead>
+      <tr>
+        <td>
+          Product
+          <a href="#" ng-click="sortType = 'product'; sortReverse = !sortReverse">
+            <span class="glyphicon glyphicon-sort"></span>
+            <span ng-show="sortType == 'product' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'product' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </td>
+        <td>
+          Price
+          <a href="#" ng-click="sortType = 'price'; sortReverse = !sortReverse">
+            <span class="glyphicon glyphicon-sort"></span>
+            <span ng-show="sortType == 'price' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'price' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </td>
+        <td>
+          Desc
+          <a href="#" ng-click="sortType = 'description'; sortReverse = !sortReverse">
+            <span class="glyphicon glyphicon-sort"></span>
+            <span ng-show="sortType == 'tastiness' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'tastiness' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </td>
+        <td class="text-center">
+          Edit
+        </td>
+        <td class="text-center">
+          Delete
+        </td>
+      </tr>
+    </thead>
+
+
+
+
+
+
+
+
+
+        <tfoot>
+          <tr>
+            <td>
+              Product
+              <a href="#" ng-click="sortType = 'product'; sortReverse = !sortReverse">
+                <span class="glyphicon glyphicon-sort"></span>
+                <span ng-show="sortType == 'product' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'product' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>
+            <td>
+              Price
+              <a href="#" ng-click="sortType = 'price'; sortReverse = !sortReverse">
+                <span class="glyphicon glyphicon-sort"></span>
+                <span ng-show="sortType == 'price' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'price' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>
+            <td>
+              Desc
+              <a href="#" ng-click="sortType = 'description'; sortReverse = !sortReverse">
+                <span class="glyphicon glyphicon-sort"></span>
+                <span ng-show="sortType == 'tastiness' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'tastiness' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>
+            <td class="text-center">
+              Edit
+            </td>
+            <td class="text-center">
+              Delete
+            </td>
+          </tr>
+        </tfoot>
+
+
+
+
+
+    <!-- <thead>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th class="text-center">Edit</th>
+      <th>Delete</th>
+    </thead> -->
+
+    <tbody ng-repeat="product in products | orderBy:sortType:sortReverse | filter:searchProduct">
+    <tr>
+      <td><a ui-sref="product({id: product.id})"> {{product.product}}</a></td>
+      <td>{{product.price}}</td>
+      <td>{{product.description}}</td>
+      <td>
+        <a ui-sref="edit({id: product.id})" class="container-center">
+          <span class="glyphicon glyphicon-edit text-primary"></span>
+        </a>
+      </td>
+      <td>
+        <a href="#" class="container-center" ng-click="deleteProduct(product)">
+          <span class="glyphicon glyphicon-remove text-danger"></span>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+  </table>
