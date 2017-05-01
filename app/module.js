@@ -1,4 +1,4 @@
-angular.module('ecommerce', ['ui.router'])
+angular.module('ecommerce', ['ui.router', 'ngCookies'])
     .config(function ($stateProvider, $urlRouterProvider) {
         // console.log("funciona");
         $stateProvider
@@ -27,6 +27,17 @@ angular.module('ecommerce', ['ui.router'])
              url:'admin/create',
              templateUrl: "./app/components/admin/create/createView.html",
              controller: 'createCtrl'
+         })
+         .state('login',{
+             url:'login',
+             templateUrl: "./app/components/login/loginView.html",
+            //  controller: 'loginCtrl'
+         })
+         .state('cart',{
+             url:'cart',
+             templateUrl: "./app/components/cart/cartView.html",
+            //  templateUrl: "./app/components/admin/home/adminView.html",
+             controller: 'cartCtrl'
          })
         //  .state('packages',{
         //      url:'/packages',

@@ -1,13 +1,5 @@
-<h1>Products</h1>
+<h1>Cart</h1>
 
-  <form class="col-xs-12">
-  <div class="form-group">
-    <div class="input-group">
-      <div class="input-group-addon"><i class="fa fa-search"></i></div>
-      <input type="text" class="form-control input-z" placeholder="Search" ng-model="searchProduct">
-    </div>
-  </div>
-  </form>
 
   <table class="table table-hover table-responsive table-sm">
 
@@ -30,18 +22,23 @@
           </a>
         </td>
         <td>
-          Description
+          Quantity
           <a href="#" ng-click="sortType = 'description'; sortReverse = !sortReverse">
             <span class="glyphicon glyphicon-sort"></span>
-            <span ng-show="sortType == 'description' && !sortReverse" class="fa fa-caret-down"></span>
-            <span ng-show="sortType == 'description' && sortReverse" class="fa fa-caret-up"></span>
+            <span ng-show="sortType == 'tastiness' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'tastiness' && sortReverse" class="fa fa-caret-up"></span>
           </a>
         </td>
         <td class="text-center">
-          Add to Cart
+          Total
+          <a href="#" ng-click="sortType = 'description'; sortReverse = !sortReverse">
+            <span class="glyphicon glyphicon-sort"></span>
+            <span ng-show="sortType == 'tastiness' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'tastiness' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
         </td>
-        <td class="text-center" ng-show="logged">
-          Quantity
+        <td class="text-center">
+          Delete
         </td>
       </tr>
     </thead>
@@ -69,35 +66,46 @@
           </a>
         </td>
         <td>
-          Description
-          <a href="#" ng-click="sortType = 'description'; sortReverse = !sortReverse">
+          Quantity
+          <a href="#" ng-click="sortType = 'quantity'; sortReverse = !sortReverse">
             <span class="glyphicon glyphicon-sort"></span>
-            <span ng-show="sortType == 'tastiness' && !sortReverse" class="fa fa-caret-down"></span>
-            <span ng-show="sortType == 'tastiness' && sortReverse" class="fa fa-caret-up"></span>
+            <span ng-show="sortType == 'quantity' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'quantity' && sortReverse" class="fa fa-caret-up"></span>
           </a>
         </td>
         <td class="text-center">
-          Add to Cart
+          Total
+          <a href="#" ng-click="sortType = 'total'; sortReverse = !sortReverse">
+            <span class="glyphicon glyphicon-sort"></span>
+            <span ng-show="sortType == 'total' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'total' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
         </td>
-        <td class="text-center" ng-show="logged">
-          Quantity
+        <td class="text-center">
+          Delete
         </td>
       </tr>
     </tfoot>
 
-    <tbody ng-repeat="product in products | orderBy:sortType:sortReverse | filter:searchProduct">
+    <tbody ng-repeat="product in cart | orderBy:sortType:sortReverse | filter:searchProduct">
     <tr>
       <td><a ui-sref="product({id: product.id})"> {{product.product}}</a></td>
-      <td>{{product.price}}</td>
-      <td>{{product.description}}</td>
+      <td>${{product.price | number}}</td>
+      <td>{{product.quantity | number}}</td>
       <td class="text-center">
-        <a class="btn btn-info btn-md text-center" ng-click="addToCart($index)">
-        <span class="glyphicon glyphicon-shopping-cart"></span></a>
+        ${{product.price * product.quantity | number}}
       </td>
       <td class="text-center">
-        <input type="number" ng-init="quantity[$index]=1" class="inputQuantity"  ng-model="quantity[$index]">
-        <!-- <input type="number" ng-init="1" class="inputQuantity"> -->
+        <a href="#" class="container-center" ng-click="deleteCartProduct(product)">
+          <span class="glyphicon glyphicon-remove text-danger"></span>
+        </a>
+
       </td>
     </tr>
   </tbody>
-  </table>
+</table>
+
+<!-- <div class="row"> -->
+  <div class="col-xs-offset-7 col-lg-offset-10"><h3>Total: ${{getTotal() | number}}</h3></div>
+  <!-- <div ><h3>Total: ${{getTotal() | number}}</h3></div> -->
+<!-- </div> -->

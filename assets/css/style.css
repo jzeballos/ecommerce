@@ -5,7 +5,7 @@
 .main-container {
   /*height: 60px;*/
   width: 100%;
-  margin: 30px 0px;
+  margin: 30px 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -35,7 +35,6 @@ h4.admin {
     color: @link-hover-color;
   }
 }
-
 
 .container-center {
   display: flex;
@@ -67,9 +66,38 @@ h4.admin {
   overflow: auto;
 }
 
+.logIn {
+  margin-left:0;
+}
+
+.inputQuantity {
+  width: 45px;
+}
+
+.input-z {
+  position: relative;
+  z-index: 999;
+}
+
+.view {
+  margin-top: 65px;
+  /*z-index:1;*/
+  position: relative;
+}
+
 header {
-  margin: 7px 0px;
+  padding: 7px 0;
   display: flex;
+  /*flex-direction: row;*/
+  /*flex-wrap: wrap;*/
+  align-items: center;
+  width: 100%;
+  position:fixed;
+  top: 0;
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+  opacity: 1 !important;
+  z-index:999;
 }
 
 a {
